@@ -7,10 +7,8 @@ using Unity.VisualScripting;
 using FMOD.Studio;
 
 public class AudioSystem : MonoBehaviour
-{
-    // EMITTERS //
-    [SerializeField] private StudioEventEmitter TavernMusic_2; // to tylko prezentacja
-    
+{// EMITTERS //[SerializeField] private StudioEventEmitter TavernMusic_2; // to tylko prezentacja
+
     public FMODUnity.StudioEventEmitter TavernMusic; // �cie�ka do event emittera na scenie
     public StudioEventEmitter TavernAmb;
     public StudioEventEmitter TavernFireplace;
@@ -106,8 +104,8 @@ public class AudioSystem : MonoBehaviour
         door_2 = "Tavern_door_room (1)";
         door_3 = "Tavern_door_room (2)";
 
-    // CALC DISTANCE TO GROUND // 
-    distToGround = GetComponent<Collider>().bounds.extents.y;
+        // CALC DISTANCE TO GROUND // 
+        distToGround = GetComponent<Collider>().bounds.extents.y;
 
         if (TavernFireplace == null)
             Debug.LogError("NULL");
@@ -169,7 +167,7 @@ public class AudioSystem : MonoBehaviour
     {
         if (doorsName == door_1)
         {
-            if(doorsOpened_1)
+            if (doorsOpened_1)
                 DoorsManager(ref DoorsSound, 1, close);
             else
                 DoorsManager(ref DoorsSound, 1, open);
@@ -188,7 +186,7 @@ public class AudioSystem : MonoBehaviour
             else
                 DoorsManager(ref DoorsSound, 3, open);
         }
-    }    
+    }
 
     // FOOTSTEPS SOUNDS // 
     public void PlayFootsteps()
@@ -304,6 +302,7 @@ public class AudioSystem : MonoBehaviour
     public void SpellCancel()
     {
         SpellSound.setParameterByNameWithLabel("Spell", "Cancel");
+        Debug.Log("CANCEL");
         SpellSound.release();
     }
 
@@ -360,7 +359,7 @@ public class AudioSystem : MonoBehaviour
         {
             InsideRoom = FMODUnity.RuntimeManager.CreateInstance(insideRoomSnap);
         }
-        
+
         if (roomsAmbientActivated == true && doorsName == door_1 && doorsOpened_1 == false)
         {
             RoomsSnapInstanceStart();
